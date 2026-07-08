@@ -1,4 +1,5 @@
 const map = L.map('map').setView([0, 0], 2);
+marker.setLatLng([latitude, longitude]);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap contributors'
