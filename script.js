@@ -18,6 +18,19 @@ const marker = L.marker([0, 0], { icon: issIcon }).addTo(map);
 // Orbit path setup
 let pathCoords = [];
 let pathLine = L.polyline([], { color: "red" }).addTo(map);
+async function getISS() {
+  try {
+    const response = await fetch("https://api.wheretheiss.at/v1/satellites/25544");
+    const data = await response.json();
+    console.log(data); // <-- check if data arrives
+    const { latitude, longitude, altitude, velocity } = data;
+    ...
+  } catch (error) {
+    console.error("Error fetching ISS data:", error);
+  }
+}
+map.setView([latitude, longitude], 3);
+marker.setLatLng([latitude, longitude]);
 
 async function getISS() {
   try {
