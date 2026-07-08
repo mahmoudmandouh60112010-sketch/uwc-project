@@ -1,0 +1,27 @@
+ body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin: 20px;
+      color: #333;
+    }
+    #map {
+      height: 500px;
+      width: 90%;
+      max-width: 800px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+    #info {
+      margin-top: 15px;
+      font-size: 1.1em;
+      color: #444;
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
