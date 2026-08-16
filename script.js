@@ -1,11 +1,9 @@
 const map = L.map("map").setView([0, 0], 2);
 
-// Add OpenStreetMap tiles
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "© OpenStreetMap contributors"
 }).addTo(map);
 
-// Create ISS marker
 const issIcon = L.icon({
   iconUrl:
     "https://upload.wikimedia.org/wikipedia/commons/d/d0/International_Space_Station.svg",
@@ -14,7 +12,6 @@ const issIcon = L.icon({
 });
 const marker = L.marker([0, 0], { icon: issIcon }).addTo(map);
 
-// Orbit path setup
 let pathCoords = [];
 let pathLine = L.polyline([], { color: "red" }).addTo(map);
 
@@ -26,14 +23,14 @@ async function getISS() {
     const data = await response.json();
     const { latitude, longitude, altitude, velocity } = data;
 
-    // Update marker position only (no auto-centering)
+
     marker.setLatLng([latitude, longitude]);
 
-    // Add to path
+ 
     pathCoords.push([latitude, longitude]);
     pathLine.setLatLngs(pathCoords);
 
-    // Update info panel
+ 
     document.getElementById("info").innerText = `Latitude: ${latitude.toFixed(
       2
     )} | Longitude: ${longitude.toFixed(2)} 
@@ -46,8 +43,6 @@ async function getISS() {
   }
 }
 
-// Run once immediately
 getISS();
-// Update every 10 seconds
 setInterval(getISS, 10000);
 
